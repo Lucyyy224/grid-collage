@@ -1,0 +1,50 @@
+ /* 两栏：左拼贴、右文本 */
+*{ box-sizing: border-box; }
+html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Arial; }
+
+.wrap{
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* 左 2 / 右 1 */
+  gap: 2vmin;
+  padding: 3vmin;
+  min-height: 100vh;
+}
+
+/* 左侧拼贴：相对定位 + 各图片绝对定位，大小随机，带少量旋转 */
+.collage{
+  position: relative;
+  background: #f5f5f5;
+  border: 1px solid #000;
+  overflow: hidden;
+  min-height: 60vmin;
+}
+
+.collage img{
+  position: absolute;
+  object-fit: cover;
+  display: block;
+  /* 统一一点点描边，方便看重叠关系；不想要可删 */
+  border: 1px solid #000;
+}
+
+/* 这里随便给出一个“随机感”的位置与大小、旋转。
+   你可以改百分比或角度让它更随性。 */
+.i1 {  width:22vmin; height:16vmin; left:4%;   top:6%;   transform: rotate(-4deg); }
+.i2 {  width:18vmin; height:24vmin; left:24%;  top:10%;  transform: rotate(6deg);  }
+.i3 {  width:26vmin; height:18vmin; left:46%;  top:4%;   transform: rotate(-2deg); }
+.i4 {  width:20vmin; height:14vmin; left:10%;  top:36%;  transform: rotate(8deg);  }
+.i5 {  width:24vmin; height:20vmin; left:36%;  top:32%;  transform: rotate(-7deg); }
+.i6 {  width:16vmin; height:22vmin; left:60%;  top:22%;  transform: rotate(3deg);  }
+.i7 {  width:28vmin; height:18vmin; left:6%;   top:58%;  transform: rotate(-5deg); }
+.i8 {  width:20vmin; height:20vmin; left:30%;  top:58%;  transform: rotate(9deg);  }
+.i9 {  width:18vmin; height:16vmin; left:52%;  top:62%;  transform: rotate(-3deg); }
+.i10{  width:22vmin; height:14vmin; left:70%;  top:46%;  transform: rotate(5deg);  }
+
+/* 右侧文本块 */
+.text{
+  border: 1px solid #000;
+  padding: 2rem;
+  line-height: 1.5;
+}
+.text h1{ margin: 0 0 .5rem; font-size: clamp(1.4rem, 2.2vw, 2rem); }
+.text p { margin: 0 0 1rem; }
