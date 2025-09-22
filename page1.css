@@ -65,16 +65,16 @@ body{background:#111;}
   font-weight: 400; 
 }
 
-/* ---------- Page 1 Intro 文本区 ---------- */
+
 .page-intro{
-  position:absolute;           /* 让它浮在拼贴上方 */
+  position:absolute;          
   top:10%;
   left:50%;
-  transform:translateX(-50%);  /* 水平居中 */
+  transform:translateX(-50%); 
   text-align:center;
   color:#fff;
   font-family: "Bitcount Prop Double Ink", system-ui, sans-serif;
-  z-index:10000;               /* 保证在图片和 label 上面 */
+  z-index:10000;            
 }
 
 .page-intro h1{
