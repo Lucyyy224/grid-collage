@@ -1,50 +1,97 @@
- /* 两栏：左拼贴、右文本 */
+
+
 *{ box-sizing: border-box; }
-html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, Arial; }
+html, body { height: 100%; margin: 0;  font-family: 'BitcountInk', sans-serif;; }
 
 .wrap{
   display: grid;
-  grid-template-columns: 2fr 1fr; /* 左 2 / 右 1 */
+  grid-template-columns: 2fr 1fr;       
   gap: 2vmin;
   padding: 3vmin;
   min-height: 100vh;
 }
 
-/* 左侧拼贴：相对定位 + 各图片绝对定位，大小随机，带少量旋转 */
+
 .collage{
   position: relative;
   background: #f5f5f5;
-  border: 1px solid #000;
+
   overflow: hidden;
-  min-height: 60vmin;
+  min-height: calc(100vh - 6vmin);    
 }
 
 .collage img{
   position: absolute;
   object-fit: cover;
   display: block;
-  /* 统一一点点描边，方便看重叠关系；不想要可删 */
-  border: 1px solid #000;
+
+
+ 
 }
 
-/* 这里随便给出一个“随机感”的位置与大小、旋转。
-   你可以改百分比或角度让它更随性。 */
-.i1 {  width:22vmin; height:16vmin; left:4%;   top:6%;   transform: rotate(-4deg); }
-.i2 {  width:18vmin; height:24vmin; left:24%;  top:10%;  transform: rotate(6deg);  }
-.i3 {  width:26vmin; height:18vmin; left:46%;  top:4%;   transform: rotate(-2deg); }
-.i4 {  width:20vmin; height:14vmin; left:10%;  top:36%;  transform: rotate(8deg);  }
-.i5 {  width:24vmin; height:20vmin; left:36%;  top:32%;  transform: rotate(-7deg); }
-.i6 {  width:16vmin; height:22vmin; left:60%;  top:22%;  transform: rotate(3deg);  }
-.i7 {  width:28vmin; height:18vmin; left:6%;   top:58%;  transform: rotate(-5deg); }
-.i8 {  width:20vmin; height:20vmin; left:30%;  top:58%;  transform: rotate(9deg);  }
-.i9 {  width:18vmin; height:16vmin; left:52%;  top:62%;  transform: rotate(-3deg); }
-.i10{  width:22vmin; height:14vmin; left:70%;  top:46%;  transform: rotate(5deg);  }
 
-/* 右侧文本块 */
+.i1  { width:30vw; height:22vh; left:2%;   top:4%;   transform:rotate(-6deg); z-index:2; }
+.i2  { width:20vw; height:30vh; left:28%;  top:2%;   transform:rotate(4deg);  z-index:3; }
+.i3  { width:26vw; height:18vh; left:52%;  top:6%;   transform:rotate(-2deg); z-index:4; }
+.i4  { width:22vw; height:16vh; left:6%;   top:36%;  transform:rotate(7deg);  z-index:3; }
+.i5  { width:32vw; height:24vh; left:30%;  top:32%;  transform:rotate(-8deg); z-index:2; }
+.i6  { width:18vw; height:26vh; left:64%;  top:28%;  transform:rotate(3deg);  z-index:2; }
+.i7  { width:30vw; height:30vh; left:2%;   top:64%;  transform:rotate(-5deg); z-index:4; }
+.i8  { width:20vw; height:20vh; left:28%;  top:60%;  transform:rotate(8deg);  z-index:4; }
+.i9  { width:22vw; height:16vh; left:50%;  top:62%;  transform:rotate(-3deg); z-index:3; }
+.i10 { width:17vw; height:24vh; left:76%;  top:46%;  transform:rotate(5deg);  z-index:4; }
+
+
 .text{
-  border: 1px solid #000;
+  font-family: "Courier New", Courier, monospace;
+
   padding: 2rem;
   line-height: 1.5;
+  z-index: 9999;           
+  color: rgb(224, 106, 126);
 }
 .text h1{ margin: 0 0 .5rem; font-size: clamp(1.4rem, 2.2vw, 2rem); }
 .text p { margin: 0 0 1rem; }
+
+@media (max-width: 960px){
+  .wrap{ grid-template-columns: 1fr; }
+  .collage{ min-height: 70vh; }
+}
+
+.page-header{
+  position: fixed;             
+  bottom: 20px;                /* 距离底部 20px */
+  right: 20px;                 /* 距离右边 20px */
+  text-align: right;
+  z-index: 10000;              
+  font-family: 'BitcountInk', sans-serif;
+  color: #111;
+  background: rgba(255,255,255,0.9); 
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.12);
+}
+
+.page-header h1{
+  margin: 0 0 8px;
+  font-size: clamp(1.2rem, 3vw, 1.8rem);
+  line-height: 1;
+}
+
+.page-header .nav{
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;   /* 链接靠右 */
+}
+
+.page-header .nav a{
+  text-decoration: none;
+  background: #111;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 700;
+  transition: background .25s ease, transform .06s ease;
+}
+.page-header .nav a:hover{ background:#444; }
+.page-header .nav a:active{ transform: translateY(1px); }
